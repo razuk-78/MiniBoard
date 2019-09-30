@@ -1,3 +1,3 @@
 export enum Progress {
-    BackLog,ToDo, Progress, Done
+    BackLog,ToDo, InProgress, Done
 }

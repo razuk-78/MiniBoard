@@ -4,8 +4,11 @@ export abstract class Item  {
     Desecription:string;
     readonly Started:Date;
     Comments:Array<string>;
-    constructor(private title:string){
-                this.Started=new Date();                           
+    constructor( _title:string){
+                this.Started=new Date();
+                this.Comments=new Array<string>();
+                this.Title=_title;
+                this.Desecription="";                   
     }
     
 }

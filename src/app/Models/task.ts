@@ -3,7 +3,7 @@ import { TaskType } from './task-type.enum';
 import { Progress } from './progress.enum';
 
 export class Task extends Item {
-    constructor(private _title:string){
+    constructor(_title:string){
        super(_title)
     this.Type=TaskType.Issue;
     this.Progress=Progress.BackLog;

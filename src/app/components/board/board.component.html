@@ -1,34 +1,76 @@
-<p>board works!</p>
-
-<div class="container-fluid">
-
+<!--<div class="container-fluid">
   <div class="row">
     <div class="col-4" style="height:500px" progress="ToDo">
       <div class="fluid bg-primary text-white ">
         <h2>ToDo</h2>
         <ng-container *ngFor="let task of testTaskList">
-            <app-card *ngIf="task.Progress==0"  [task]="task">{{task.Title}}</app-card>
+          <app-card *ngIf="task.Progress==0" [task]="task">{{task.Title}}</app-card>
         </ng-container>
       </div>
     </div>
-      <div class="col-4" style="height:500px" progress="InProgress">
-        <div class="fluid bg-primary text-white ">
-          <h2>InProgress</h2>
-          <ng-container *ngFor="let task of testTaskList">
-              <app-card *ngIf="task.Progress==3" [task]="task"></app-card>
-          </ng-container>
-        </div>
+    <div class="col-4" style="height:500px" progress="InProgress">
+      <div class="fluid bg-primary text-white ">
+        <h2>InProgress</h2>
+        <ng-container *ngFor="let task of testTaskList">
+          <app-card *ngIf="task.Progress==3" [task]="task"></app-card>
+        </ng-container>
+      </div>
     </div>
-        <div class="col-4 " style="height:500px" progress="Done">
-          <div class="fluid bg-primary text-white ">
-            <h2>Done</h2>
-            <ng-container *ngFor="let task of testTaskList">
-                <app-card *ngIf="task.Progress==4" [task]="task"></app-card>
-            </ng-container>
+    <div class="col-4" progress="Done">
+      <div class="fluid bg-primary text-white ">
+        <h2 >Done</h2>
+        <ng-container *ngFor="let task of testTaskList">
+          <app-card *ngIf="task.Progress==4" [task]="task"></app-card>
+        </ng-container>
 
-          </div>
-        </div>
+      </div>
+    </div>
+</div>-->
+<div cdkDropListGroup>
+  <div class="example-container">
+    <h2>To do</h2>
 
+    <div
+      cdkDropList
+      [cdkDropListData]="ToDo"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
       
-    
+      <ng-container *ngFor="let task of ToDo">
+          <div class="example-box" cdkDrag>
+            <app-card  [task]="task"></app-card>
+          </div> 
+      </ng-container>
+    </div>
   </div>
+ <div class="example-container">
+    <h2>In Progress</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="InProgress"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <ng-container *ngFor="let task of InProgress">
+          <div class="example-box" cdkDrag>
+            <app-card [task]="task"></app-card>
+          </div> 
+      </ng-container>
+    </div>
+  </div>
+  <div class="example-container">
+    <h2>Done</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="Done"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <ng-container *ngFor="let task of Done">
+          <div class="example-box" cdkDrag>
+            <app-card  [task]="task"></app-card>
+          </div> 
+      </ng-container>
+    </div>
+  </div>
+</div>

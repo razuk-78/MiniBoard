@@ -1,9 +1,35 @@
 
-<h2>{{task.Title}}</h2>
-<div class="card ">
-        <div class="card-body">
-          <h2>{{task.Title}}</h2>
-          <p class="card-text">{{task.Desecription}}</p>
-          <a class="btn btn-primary">Button</a>
-        </div>
-</div>
+        <mat-accordion >
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Titel:
+                </mat-panel-title>
+                <mat-panel-description>
+                    {{task.Title}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+          
+              <p>
+                  {{task.Description}}
+              </p>
+             
+    
+            </mat-expansion-panel>
+          </mat-accordion>
+          <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Comments:({{task.Comments.length}})
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+            
+                <p *ngFor="let comment of task.Comments">
+                    {{comment}}
+                </p>
+              
+              </mat-expansion-panel>
+            </mat-accordion>
+
+        

@@ -10,12 +10,14 @@ import { MatSliderModule } from '@angular/material/slider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { EditorComponent } from './editor/editor.component';
 @NgModule({
   declarations: [
     AppComponent,
     ProjectsComponent,
     BoardComponent,
-    CardComponent
+    CardComponent,
+    EditorComponent
   ],
   imports: [
     BrowserModule,

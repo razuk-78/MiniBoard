@@ -1,0 +1,25 @@
+.editor-background{
+position:fixed;
+background-color:black;
+left: 0px;
+top:0px;
+opacity: 0.4;
+height: 100%;
+width:100%;
+}
+.editor-container{
+    position: fixed;
+    top:25%;
+    left:35%;
+    margin-bottom: 25%;
+    height: 50%;
+    width: 30%;
+    opacity:1;
+    animation: 1s;
+    animation-name: "move-editor-form";
+}
+
+@keyframes move-editor-form{
+    from{top:0%;opacity: 0.1;}
+    to{top:25%;opacity: 1;}
+}

@@ -1,26 +1,86 @@
 <!-- Button trigger modal -->
+<!--todo 
+add an exit button on top
+-->
+<div class="editor-background"></div>
 
-      
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+<!-- Item Editor -->
+<ng-container *ngIf="Sender =='task||project'">
+<div class="editor-container">
+  <div class="card">
+    <h5 class="card-header info-color white-text text-center py-4">
+      <strong>Editor</strong>
+    </h5>
+
+    <!--Card content-->
+    <div class="card-body px-lg-5 pt-0">
+      <!-- Form -->
+      <div class="text-center" style="color: #757575;" action="#!">
+        <!-- Title -->
+        <div class="md-form mt-3">
+          <label for="materialContactFormName">Title</label>
+          <input [(ngModel)]="Title" type="text" [ngClass]="{ 'form-control': true }" [placeholder]="'test'"
+             />
+        </div>
+
+        <!--Description-->
+        <div class="md-form">
+          <label for="materialContactFormMessage">Description</label>
+          <textarea [(ngModel)]="Description" class="form-control md-textarea" rows="3"></textarea>
+        </div>
+       
+        <!-- save button -->
+        <button (click)="OnSaveChanges()" [ngClass]="{
+            'btn btn-outline-success btn-block z-depth-0 my-4 waves-effect': true,
+            disabled: true
+          }" type="submit">
+          save
+        </button>
+        <button (click)="OnCancel()" [ngClass]="{
+            'btn btn-outline-danger btn-block z-depth-0 my-4 waves-effect': true
+          }" type="cancel">
+          cancel
+        </button>
+      </div>
+      <!-- Form -->
+    </div>
+  </div>
+</div>
+</ng-container>
+<!-- Comment Editor -->
+<ng-container *ngIf="Sender =='Comment'">
+    <div class="editor-container">
+      <div class="card">
+        <h5 class="card-header info-color white-text text-center py-4">
+          <strong>Editor</strong>
+        </h5>
+    
+        <!--Card content-->
+        <div class="card-body px-lg-5 pt-0">
+          <!-- Form -->
+          <div class="text-center" style="color: #757575;" action="#!">
+    
+            <!--Message-->
+            <div class="md-form">
+              <label for="materialContactFormMessage">Description</label>
+              <textarea [(ngModel)]="Comment" class="form-control md-textarea" rows="3" ></textarea>
             </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+           
+            <!-- Send button -->
+            <button (click)="OnSaveChanges()" [ngClass]="{
+                'btn btn-outline-success btn-block z-depth-0 my-4 waves-effect': true
+                
+              }" [disabled]="!Comment" type="submit">
+              save
+            </button>
+            <button (click)="OnCancel()" [ngClass]="{
+                'btn btn-outline-danger btn-block z-depth-0 my-4 waves-effect': true
+              }" type="cancel">
+              cancel
+            </button>
           </div>
+          <!-- Form -->
         </div>
       </div>
-      
-
-   
+    </div>
+    </ng-container>

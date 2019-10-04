@@ -11,13 +11,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { EditorComponent } from './editor/editor.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientService } from 'src/app/Services/http-client.service';
+
 @NgModule({
   declarations: [
     AppComponent,
     ProjectsComponent,
     BoardComponent,
     CardComponent,
-    EditorComponent
+    EditorComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -25,9 +29,11 @@ import { EditorComponent } from './editor/editor.component';
     MatSliderModule,
     BrowserAnimationsModule,
     DragDropModule,
-    MatExpansionModule
+    MatExpansionModule,
+    FormsModule
+    
   ],
-  providers: [],
+  providers: [HttpClientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

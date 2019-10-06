@@ -46,15 +46,18 @@ export class HttpClientService {
   private fillDataSet(): DataSet {
     this.DataSet = new DataSet();
     let p1 = new Project("some project");
-    let t1 = new Task("solve some thing");
+    let t1 = new Task("solve some thing todo");
     t1.Comments.push("some comment");
     t1.Comments.push("some comment");
     t1.Description = "some Description to ";
-    let t2 = new Task("solve some thing");
+    let t2 = new Task("solve some thing progress");
+    let t3 = new Task("solve some thing done");
     t2.Comments.push("some comment");
     t2.Comments.push("some comment");
-    p1.BackLog.push(t1); p1.ToDo.push(t1);
-    p1.InProgress.push(t2); p1.Done.push(t2);
+    p1.BackLog.push(t1);
+    p1.ToDo.push(t1);
+    p1.InProgress.push(t2);
+    p1.Done.push(t3);
     this.DataSet.Projects.push(p1);
     return this.DataSet;
   }

@@ -13,6 +13,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { EditorComponent } from './editor/editor.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientService } from 'src/app/Services/http-client.service';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { HttpClientService } from 'src/app/Services/http-client.service';
     BoardComponent,
     CardComponent,
     EditorComponent,
+    SideBarComponent,
     
   ],
   imports: [

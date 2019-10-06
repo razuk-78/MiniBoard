@@ -24,16 +24,17 @@ export class BoardComponent implements OnInit {
   Done:Task[];
   InProgress:Task[];
   ToDo:Task[];
-  str:any;
   Projects:Array<Project>;
+  Task:Task;
+  Comment:string;
   constructor(private httpClient:HttpClientService) {
-   
-  
+
+
 
    console.log(httpClient.DataSet);
   }
-  
-  
+
+
   ngOnInit() {
      this.httpClient.SetCurrentProject(this.ProjectIndex);
      this.ToDo = this.httpClient.CurrentProject.ToDo;
@@ -47,19 +48,37 @@ export class BoardComponent implements OnInit {
   }
 
   SetProject(index:number){
-    
+
   }
-  OnEdit(task:Task){
-   
-    task.Title="changed from onedit";
-  console.log(this.ToDo);
-  console.log(this.InProgress);
- 
+  viewEditor:boolean;
+  OnViewEdit(task:Task){
+    this.Task=task;
+    this.viewEditor=true;
   }
+
+  OnCancelEdit(val){
+    this.viewEditor=val;
+  }
+
   OnDelete(task:Task):void{
-   this.ToDo.splice(this.ToDo.indexOf(task),1);
-   console.log(this.ToDo);
+
+    let IndxT =this.ToDo.indexOf(task);
+    let IndxI =this.InProgress.indexOf(task);
+    let IndxD =this.Done.indexOf(task);
+    
+    if(IndxT >-1){
+       this.ToDo.splice(IndxT,1);
+       return;
+    }
+    if(IndxD >-1){
+      this.Done.splice(IndxD,1);
+      return;
+   }
+   if(IndxI>-1){
+    this.InProgress.splice(IndxI,1);
+    return;
   }
+ }
   drop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
@@ -74,7 +93,7 @@ export class BoardComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
-      
+
     }
   }
 }

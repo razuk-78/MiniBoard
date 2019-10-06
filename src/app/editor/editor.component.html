@@ -5,7 +5,8 @@ add an exit button on top
 <div class="editor-background"></div>
 
 <!-- Item Editor -->
-<ng-container *ngIf="Sender =='task||project'">
+
+<ng-container *ngIf="'InputItem instanceof Task||InputItem instanceof Project'">
 <div class="editor-container">
   <div class="card">
     <h5 class="card-header info-color white-text text-center py-4">
@@ -32,7 +33,7 @@ add an exit button on top
         <!-- save button -->
         <button (click)="OnSaveChanges()" [ngClass]="{
             'btn btn-outline-success btn-block z-depth-0 my-4 waves-effect': true,
-            disabled: true
+             disabled: true
           }" type="submit">
           save
         </button>
@@ -48,7 +49,7 @@ add an exit button on top
 </div>
 </ng-container>
 <!-- Comment Editor -->
-<ng-container *ngIf="Sender =='Comment'">
+<ng-container *ngIf="true">
     <div class="editor-container">
       <div class="card">
         <h5 class="card-header info-color white-text text-center py-4">

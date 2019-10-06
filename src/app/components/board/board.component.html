@@ -11,7 +11,7 @@
       
       <ng-container *ngFor="let task of ToDo">
           <div class="example-box" cdkDrag>
-            <app-card (Delete)="OnDelete($event)" (Edit)="OnEdit($event)"  [task]="task"></app-card>
+            <app-card (Delete)="OnDelete($event)" (Edit)="OnViewEdit($event)"  [task]="task"></app-card>
           </div> 
       </ng-container>
     </div>
@@ -26,7 +26,7 @@
       (cdkDropListDropped)="drop($event)">
       <ng-container *ngFor="let task of InProgress">
           <div class="example-box" cdkDrag>
-            <app-card (Delete)="OnDelete($event)" (Edit)="OnEdit($event)"  [task]="task"></app-card>
+            <app-card (Delete)="OnDelete($event)" (Edit)="OnViewEdit($event)"  [task]="task"></app-card>
           </div> 
       </ng-container>
     </div>
@@ -41,9 +41,10 @@
       (cdkDropListDropped)="drop($event)">
       <ng-container *ngFor="let task of Done">
           <div class="example-box" cdkDrag>
-            <app-card (Delete)="OnDelete($event)" (Edit)="OnEdit($event)"  [task]="task"></app-card>
+            <app-card (Delete)="OnDelete($event)" (Edit)="OnViewEdit($event)"  [task]="task"></app-card>
           </div> 
       </ng-container>
     </div>
   </div>
 </div>
+<app-editor (CancelEditor)="OnCancelEdit($event)" *ngIf="viewEditor" [InputItem]="Task"></app-editor>

@@ -1,8 +1,15 @@
 
   <div class="card">
-      <h5 class="card-header info-color white-text text-center py-4">
-      <button (click) ="OnEdit()" class="btn btn-info ">edit</button>
-      <button (click)="OnDelete()"  class="btn btn-danger">Remove</button>
+      <h5 class="card-header info-color white-text text-center py-2">
+        <a class="btn btn-light float-right"  aria-label="edit" data-toggle="tooltip" data-placement="left" title="edit task">
+          <i class="fa fa-edit" aria-hidden="true"></i>
+        </a>
+      <a class="btn btn-light float-right " data-toggle="tooltip" data-placement="left" title="delete task"  aria-label="Delete">
+        <i class="fa fa-trash-o" aria-hidden="true"></i>
+      </a>
+      <a class="btn btn-light float-left" data-toggle="tooltip" data-placement="left" title="To Backlog">
+        <i class="fa fa-reply"></i>
+      </a>
       </h5>
         <mat-accordion >
             <mat-expansion-panel>
@@ -15,7 +22,7 @@
                     {{task.Title}}
                 </mat-panel-description>
               </mat-expansion-panel-header>
-          
+             
               <p>
                   {{task.Description}}
               </p>
@@ -30,10 +37,24 @@
                     Comments:({{task.Comments.length}})
                   </mat-panel-title>
                 </mat-expansion-panel-header>
-            
-                <p *ngFor="let comment of task.Comments">
+                
+                <ng-container *ngFor="let comment of task.Comments">
+                  <div>
+                  <a class="btn btn-light float-right"  aria-label="edit" data-toggle="tooltip" data-placement="left" title="edit">
+                    <i class="fa fa-edit" aria-hidden="true"></i>
+                  </a>
+                <a class="btn btn-light float-right"  aria-label="Delete" data-toggle="tooltip" data-placement="left" title="delete">
+                  <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </a>
+              
+                  <p >
                     {{comment}}
                 </p>
+              </div>
+              <br>
+                </ng-container>
+               
+               
               
               </mat-expansion-panel>
             </mat-accordion>

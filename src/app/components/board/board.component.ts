@@ -40,7 +40,7 @@ export class BoardComponent implements OnInit {
      this.ToDo = this.httpClient.CurrentProject.ToDo;
      this.Done = this.httpClient.CurrentProject.Done;
      this.InProgress = this.httpClient.CurrentProject.InProgress;
-    let  td:Task=new Task(this.ToDo[0].Title);
+      let  td:Task=new Task(this.ToDo[0].Title);
       td.Comments=this.ToDo[0].Comments;
       td.Description=this.ToDo[0].Description;
       td.Id = 10;

@@ -1,7 +1,26 @@
 <div class="sidebar-container">
-    <div [@openCloseLeft]="Isopen ? 'open' : 'close'"  class="sidebar-left">
-      
+
+  <div [@openCloseLeft]="Isopen ? 'open' : 'close'" class="sidebar-left">
+    <h2>BackLog
+      <a (click)="OnAddNewTask()"  class="btn btn-light float-right"  aria-label="delete" data-toggle="tooltip" data-placement="left" title="Add Task">
+        <i class="fa fa-plus-square"></i>
+    </a>
+    </h2>
+  
+
+    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+
+      <app-card  [IsBacklog]="true" *ngFor="let task of BackLogTaskes" cdkDrag [task]="task" ></app-card>
     </div>
-    <div [@openCloseRight]="Isopen ? 'open' : 'close'" class="sidebar-right">
-    <div class="sidebar-left-btn"  (click)="Slide()"><h3 style="transform: rotate(90deg)">backlog</h3></div></div>
+
+  </div>
+
+  <div [@openCloseRight]="Isopen ? 'open' : 'close'" class="sidebar-right">
+
+    <app-board [ProjectIndex]="0" class="right"></app-board>
+    <div class="sidebar-left-btn" (click)="Slide()">
+      <h3 style="transform: rotate(90deg)">backlog</h3>
     </div>
+  </div>
+  <app-editor (CancelEditor)="OnCancelEditor()" (Save)="OnSaveEditor()"  *ngIf="ShowEditor" [ObjectType]="'task'"></app-editor>
+</div>

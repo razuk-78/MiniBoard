@@ -10,28 +10,35 @@ import { Project } from '../Models/project';
 })
 export class EditorComponent implements OnInit {
 
-  constructor(private httpClient: HttpClientService) {
-    this.Item = this.InputItem;
-    this.Sender = "Comment";
+  constructor(private _httpClient: HttpClientService) {
   }
-  @Input() InputItem: any;
+  @Input()ObjectType:string;
   @Output() CancelEditor: EventEmitter<boolean> = new EventEmitter<boolean>();
-  Item: Item;
+  @Output() Save:EventEmitter<void> = new EventEmitter<void>();
   Sender: string;
   Comment: string;
   Title: string;
   Description: string;
   ngOnInit() {
-    let task = this.InputItem as Task;
-    this.Title = task.Title;
-    this.Description = task.Description;
-    let comment = this.InputItem as string;
-    this.Comment = comment;
+ 
   }
-  OnSaveChanges() {
-    this.httpClient.SaveChanges();
-  }
+
   OnCancel() {
     this.CancelEditor.emit(false);
+  }
+  OnSave(){
+   if(this.ObjectType=="task"){
+     let t= new Task(this.Title);
+     t.Description=this.Description;
+    this._httpClient.DataSet.GetCurrentBackLog().push(t);
+    this.Title="";
+    this.Description="";
+    this.Save.emit();
+}
+    if(this.ObjectType=="project"){
+      let t= new Project(this.Title);
+      t.Description=this.Description;
+     this._httpClient.DataSet.Projects.push(t);
+}
   }
 }

@@ -3,14 +3,17 @@
 add an exit button on top
 -->
 <div class="editor-background"></div>
-
-<!-- Item Editor -->
-
-<ng-container *ngIf="'InputItem instanceof Task||InputItem instanceof Project'">
+<ng-container >
 <div class="editor-container">
   <div class="card">
+      
     <h5 class="card-header info-color white-text text-center py-4">
+       
       <strong>Editor</strong>
+      <a (click)="OnCancel()" class="btn btn-danger float-right">
+        <i class="fa fa-times "></i>
+      </a>
+      
     </h5>
 
     <!--Card content-->
@@ -31,57 +34,11 @@ add an exit button on top
         </div>
        
         <!-- save button -->
-        <button (click)="OnSaveChanges()" [ngClass]="{
-            'btn btn-outline-success btn-block z-depth-0 my-4 waves-effect': true,
-             disabled: true
-          }" type="submit">
-          save
-        </button>
-        <button (click)="OnCancel()" [ngClass]="{
-            'btn btn-outline-danger btn-block z-depth-0 my-4 waves-effect': true
-          }" type="cancel">
-          cancel
-        </button>
+        <button (click)="OnSave()" class="btn btn-success btn-block" [disabled]="!Title"type="submit"> save</button>
+            
       </div>
       <!-- Form -->
     </div>
   </div>
 </div>
 </ng-container>
-<!-- Comment Editor -->
-<ng-container *ngIf="true">
-    <div class="editor-container">
-      <div class="card">
-        <h5 class="card-header info-color white-text text-center py-4">
-          <strong>Editor</strong>
-        </h5>
-    
-        <!--Card content-->
-        <div class="card-body px-lg-5 pt-0">
-          <!-- Form -->
-          <div class="text-center" style="color: #757575;" action="#!">
-    
-            <!--Message-->
-            <div class="md-form">
-              <label for="materialContactFormMessage">Description</label>
-              <textarea [(ngModel)]="Comment" class="form-control md-textarea" rows="3" ></textarea>
-            </div>
-           
-            <!-- Send button -->
-            <button (click)="OnSaveChanges()" [ngClass]="{
-                'btn btn-outline-success btn-block z-depth-0 my-4 waves-effect': true
-                
-              }" [disabled]="!Comment" type="submit">
-              save
-            </button>
-            <button (click)="OnCancel()" [ngClass]="{
-                'btn btn-outline-danger btn-block z-depth-0 my-4 waves-effect': true
-              }" type="cancel">
-              cancel
-            </button>
-          </div>
-          <!-- Form -->
-        </div>
-      </div>
-    </div>
-    </ng-container>

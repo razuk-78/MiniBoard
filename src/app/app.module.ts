@@ -13,7 +13,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { EditorComponent } from './editor/editor.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientService } from 'src/app/Services/http-client.service';
+import { KeyWordService } from 'src/app/Services/key-word.service';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { ProjectCardComponent } from './components/project-card/project-card.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
     CardComponent,
     EditorComponent,
     SideBarComponent,
+    ProjectCardComponent,
     
   ],
   imports: [
@@ -35,7 +38,9 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
     FormsModule
     
   ],
-  providers: [HttpClientService],
+  providers: [HttpClientService,KeyWordService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+ }

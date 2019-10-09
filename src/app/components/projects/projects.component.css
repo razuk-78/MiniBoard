@@ -1,0 +1,53 @@
+.container {
+  display: block;
+
+  background-color: #ffbb33;
+  margin-left: 0px;
+  margin-right: 0px;
+  max-width: 100%;
+}
+
+.header {
+
+  padding-top: .5em;
+  padding-bottom: 1em;
+  min-height: 3em;
+  width: 100%;
+  background-color: #ffbb33;
+}
+
+.menu-btn {
+  color: white;
+}
+
+.menu-circle {
+  height: 50%;
+  width: 50%;
+  border-color: white;
+  ;
+  border-style: solid;
+  border-block-start-width: 2px;
+  position: absolute;
+  top: -.2em;
+  right: -.2em;
+  border-radius: 100%;
+  text-align: center;
+  font-weight: bold;
+  color: #ffbb33;
+  background-color: white;
+}
+
+.body {
+  
+}
+
+.project-container {
+  overflow: hidden;
+  margin-top: 30px;
+  padding-top:20px;
+  display: block;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  height: 20em;
+}

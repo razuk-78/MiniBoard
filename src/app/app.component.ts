@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import * as $ from 'jquery';
+import { Component,ViewChild } from '@angular/core';
+import { KeyWordService } from 'src/app/Services/key-word.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +7,7 @@ import * as $ from 'jquery';
 })
 export class AppComponent {
   title = 'MiniBoard';
+  constructor(){
+
+  }
 }

@@ -45,20 +45,23 @@ export class HttpClientService {
   //for test only
   private fillDataSet(): DataSet {
     this.DataSet = new DataSet();
-    let p1 = new Project("some project");
-    let t1 = new Task("solve some thing todo");
-    t1.Comments.push("some comment");
-    t1.Comments.push("some comment");
-    t1.Description = "some Description to ";
-    let t2 = new Task("solve some thing");
-    t2.Comments.push("some commen qyequwetyqtwqtwuetquwteqwtuqwt\njagdagdahggagagahgdagassddddddddddsssssssssssssssssssssssssssssssssssssssss");
-                    
-    t2.Comments.push("some comment");
-    p1.BackLog.push(t1);
-    p1.ToDo.push(t1);
-    p1.InProgress.push(t2);
-   
-    this.DataSet.Projects.push(p1);
+    let ps:Array<Project>=new Array<Project>();
+
+    for(let p=0;p<10;p++){
+      let ts:Array<Task>=new Array<Task>();
+      
+      ps.push(new Project("project num: "+p));
+      for(let t=0;t<10;t++ ){
+        ts.push(new Task("task num: "+t));
+        let cs:Array<string>=new Array<string>();
+        for(let c=0;c<10;c++){
+          cs.push("comment num: "+c);
+        }
+        ts[t].Comments=cs;
+      }
+      ps[p].BackLog=ts;
+    }
+     this.DataSet.Projects=ps;
     return this.DataSet;
   }
   private serializeDataSet(DataSet: DataSet): string {

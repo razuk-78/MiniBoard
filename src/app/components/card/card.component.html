@@ -1,6 +1,10 @@
-
+<div   [ngClass]="{'card-max': IsFullScreen}">
   <div class="card">
       <h5 class="card-header info-color white-text text-center py-2">
+        <a class="btn btn-light float-right">
+            <i *ngIf="!IsFullScreen" (click)="OnMaximize()" class="fa fa-window-maximize"></i>
+            <i *ngIf="IsFullScreen" (click)="OnMinimize()" class="fa fa-window-minimize"></i>
+        </a>
           <a *ngIf="EditTask" (click)="OnSaveTask()" class="btn btn-light float-right"  aria-label="save" data-toggle="tooltip" data-placement="left" title="save">
               <i class="fa fa-check"></i>
           </a>
@@ -32,7 +36,7 @@
                   Titel:
                 </mat-panel-title>
                 <mat-panel-description>
-                    <textarea *ngIf="EditTask" [(ngModel)]="CopyTitle" class="form-control md-textarea" rows="1"></textarea>
+                    <textarea *ngIf="EditTask" [(ngModel)]="CopyTitle" class="form-control md-textarea" rows="1" ></textarea>
                   <p *ngIf="!EditTask">
                     {{task.Title}}
                   </p>
@@ -41,7 +45,7 @@
                 </mat-panel-description>
               </mat-expansion-panel-header>
               <p>Description:</p>
-              <textarea *ngIf="EditTask" [(ngModel)]="CopyDescription" class="form-control md-textarea" rows="3"></textarea>
+              <textarea *ngIf="EditTask" [(ngModel)]="CopyDescription" class="form-control md-textarea"  rows="10"></textarea>
               <p *ngIf="!EditTask">
                   {{task.Description}}
               </p>
@@ -53,11 +57,23 @@
                 <mat-expansion-panel-header>
                   <mat-panel-title>
                     Comments:({{task.Comments.length}})
+                 
                   </mat-panel-title>
                 </mat-expansion-panel-header>
+              
                 
+                <i *ngIf="!AddComment" class="fa fa-plus-square float-right" (click)="AddComment?(AddComment=false):(AddComment=true)"data-toggle="tooltip" data-placement="left" title="add comment"></i>
+               
+                
+                <i class="fa fa-check float-right" *ngIf="AddComment" data-toggle="tooltip" data-placement="left" (click)="OnSaveAddedComment(textComment.value);textComment.value=''" title="add comment"></i>
+                  
+                  <textarea #textComment [disabled]="!AddComment"></textarea>
+                                
+              
+              <br/>
                 <ng-container *ngFor="let comment of task.Comments;let i = index">
                   <div>
+                 
                     <a *ngIf="EditComment && i == CommentIndex" (click)="OnSaveCommit(i)" class="btn btn-light float-right"  aria-label="save" data-toggle="tooltip" data-placement="left" title="save">
                         <i class="fa fa-check"></i>
                     </a>
@@ -80,4 +96,4 @@
               </mat-expansion-panel>
             </mat-accordion>
   </div>
-        
+</div>     

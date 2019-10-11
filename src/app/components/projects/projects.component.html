@@ -1,20 +1,20 @@
-<div class="container">
-  <div class="header">
-<a style="position: absolute;width:3em;height:3em;margin-bottom:1em">
-        <i class="fa menu-circle">{{Projects.length}}</i>
-    <i class="fa fa-bars fa-3x float-left menu-btn" aria-hidden="true">
-     
-    </i>
-</a>
-<div class="project-container">
-   <ng-container *ngFor="let item of Projects">
-    <app-project-card></app-project-card>
-   </ng-container> 
-</div>
-</div>
-<div class="body">
-    <app-side-bar></app-side-bar>
-</div>  
-</div>
-
+<div class="container-fluid ">
+  <div class="row">
+    <div class="col-12 menu">
+      <a (click)="OnOpen()" class="menu-btn ">
+        <i class="fa menu-circle">{{ Projects.length }}</i>
+        <i style="color:white;" class="fa fa-bars fa-3x float-left" aria-hidden="true"> </i>
+      </a>
+    </div>
+  </div>
+  <div [@openCloseMenu]="IsOpen? 'open':'*'" class="row row-height">   
+     <div *ngFor="let item of Projects" class="col-4">
+      <app-project-card ></app-project-card>
+    </div>
+    
+  </div>
+  <div class="row">
+     <app-side-bar></app-side-bar>
+  </div>
+</div> 
 

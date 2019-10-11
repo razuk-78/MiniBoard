@@ -1,10 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientService } from 'src/app/Services/http-client.service';
 import { Project } from 'src/app/Models/project';
+import { trigger, state, style, transition, animate } from '@angular/animations';
+
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css']
+  styleUrls: ['./projects.component.css'],
+  animations:[
+    trigger('openCloseMenu', [
+      // ...
+      state('open', style({
+        height:'850px',
+        'overflow-y':'scroll',
+      })),
+      transition('* <=> open', [
+        animate('400ms')
+      ]),
+    ]),
+  ]
 })
 export class ProjectsComponent implements OnInit {
 
@@ -12,6 +26,7 @@ export class ProjectsComponent implements OnInit {
 
 
    }
+   IsOpen:boolean;
   Projects:Array<Project>;
   ngOnInit() {
     this.Projects=this.httpclient.DataSet.Projects;
@@ -28,6 +43,14 @@ export class ProjectsComponent implements OnInit {
   }
   OnMoveTo(){
    
+  }
+  OnOpen(){
+    if(this.IsOpen)
+        this.IsOpen=false;
+        else{
+          this.IsOpen=true;
+        }
+        console.log(this.IsOpen);
   }
   /*
   OnDeleteTask(){

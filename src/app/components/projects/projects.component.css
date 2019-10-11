@@ -1,35 +1,29 @@
-.container {
-  display: block;
-
-  background-color: #ffbb33;
-  margin-left: 0px;
-  margin-right: 0px;
-  max-width: 100%;
+.row-height{
+  height:0px;overflow-y: hidden;
 }
-
-.header {
-
-  padding-top: .5em;
-  padding-bottom: 1em;
-  min-height: 3em;
-  width: 100%;
+.menu {
   background-color: #ffbb33;
+  height:3.5em;
+  overflow: visible;
 }
 
 .menu-btn {
-  color: white;
-}
-
-.menu-circle {
-  height: 50%;
-  width: 50%;
-  border-color: white;
-  ;
-  border-style: solid;
-  border-block-start-width: 2px;
   position: absolute;
-  top: -.2em;
-  right: -.2em;
+  left:1%;
+  margin-top:5px;
+  margin-left: 5px;
+  margin-bottom:5px;
+  color: white; 
+}
+.menu-btn:hover{
+color: #fff3e0;
+}
+.menu-circle {
+  height: 2em;
+  width: 2em;
+  position: absolute;
+  top:-.5em;
+  right:-1em;
   border-radius: 100%;
   text-align: center;
   font-weight: bold;
@@ -40,14 +34,9 @@
 .body {
   
 }
-
-.project-container {
-  overflow: hidden;
+.open{
   margin-top: 30px;
   padding-top:20px;
-  display: block;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  height: 20em;
+  overflow-y:scroll;
+  height:800px;
 }

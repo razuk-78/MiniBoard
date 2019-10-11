@@ -5,6 +5,8 @@ import { Task } from 'src/app/Models/task';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import { KeyWordService } from 'src/app/Services/key-word.service';
 import { Subscription } from 'rxjs';
+import { MailService } from 'src/app/Services/mail.service';
+
 @Component({
   selector: 'app-side-bar',
   templateUrl: './side-bar.component.html',
@@ -37,14 +39,17 @@ export class SideBarComponent implements OnInit {
   BackLogTask:Task;
   ShowEditor:boolean;
    private _subscribtion:Subscription;
-   constructor(private _httClient:HttpClientService, private _keyword:KeyWordService) { 
+   private _mailSubscriber:Subscription;
+   constructor(private _httClient:HttpClientService, private _keyword:KeyWordService, private _mail:MailService) { 
    this.BackLogTaskes= _httClient.GetCurrentProject(0).BackLog;
    this._subscribtion=  _keyword.getMessage().subscribe((event)=>{this.OnKeyWord(event)});
+   this._mailSubscriber=_mail.GetRecieve().subscribe((msg)=>{this.RecieveMail(msg)});
   }
   
   ngOnInit() {
   }
   Isopen:boolean=false;
+   DisableDropList:boolean;
    Slide():void{
      
    if(!this.Isopen)
@@ -75,5 +80,9 @@ export class SideBarComponent implements OnInit {
     break;
   }
 
+  }
+  private RecieveMail(msg:string){
+    eval(msg); 
+    console.log(this.DisableDropList);
   }
 }

@@ -11,6 +11,7 @@ import {
 } from "@angular/cdk/drag-drop";
 import { HttpClientService } from 'src/app/Services/http-client.service';
 import { ChildActivationStart } from '@angular/router';
+import { MailService } from 'src/app/Services/mail.service';
 @Component({
   selector: "app-board",
   templateUrl: "./board.component.html",
@@ -18,6 +19,7 @@ import { ChildActivationStart } from '@angular/router';
 })
 export class BoardComponent implements OnInit {
   @Input() ProjectIndex:number;
+  DisableDropList:boolean;
   progress: Array<any>;
   private _dataset:DataSet;
   Done:Task[];
@@ -26,7 +28,8 @@ export class BoardComponent implements OnInit {
   Projects:Array<Project>;
   Task:Task;
   Comment:string;
-  constructor(private _httpClient:HttpClientService) {
+  constructor(private _httpClient:HttpClientService,private _mail:MailService) {
+    _mail.GetRecieve().subscribe((msg)=>{this.RecieveMsg(msg)});
   }
 
 
@@ -56,5 +59,8 @@ export class BoardComponent implements OnInit {
 
     }
   }
-
+  RecieveMsg(msg:string){
+    eval(msg);
+    console.log('from borad ${}'+this.DisableDropList);
+  }
 }

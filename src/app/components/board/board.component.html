@@ -1,5 +1,5 @@
 
-<div cdkDropListGroup>
+<div cdkDropListGroup [cdkDropListGroupDisabled]="DisableDropList">
   <div class="example-container">
     <h2>To do</h2>
     <div
@@ -22,7 +22,7 @@
       cdkDropList
       [cdkDropListData]="InProgress"
       class="example-list"
-      (cdkDropListDropped)="drop($event)">
+      (cdkDropListDropped)="drop($event)" >
       <ng-container *ngFor="let task of InProgress">
           <div class="example-box" cdkDrag>
             <app-card  [IsBacklog]="false"   [task]="task"></app-card>

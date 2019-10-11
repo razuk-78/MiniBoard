@@ -1,0 +1,11 @@
+i{
+    color: black;
+}
+.card-max{
+    position: fixed;
+    top: 0px;
+    left:20%;
+    width: 50%;
+    height:600px;
+    z-index:999;
+}

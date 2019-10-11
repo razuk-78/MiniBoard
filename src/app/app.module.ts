@@ -16,6 +16,7 @@ import { HttpClientService } from 'src/app/Services/http-client.service';
 import { KeyWordService } from 'src/app/Services/key-word.service';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { ProjectCardComponent } from './components/project-card/project-card.component';
+import { MailService } from './Services/mail.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { ProjectCardComponent } from './components/project-card/project-card.com
     FormsModule
     
   ],
-  providers: [HttpClientService,KeyWordService],
+  providers: [HttpClientService,KeyWordService,MailService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

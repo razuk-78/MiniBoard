@@ -14,6 +14,7 @@
 }
 
 .sidebar-right{   
+    
     position: absolute;
     left:0%;
     width: 100%;
@@ -26,8 +27,8 @@
 .sidebar-left-btn{   
     opacity:0.4;
     background-color: #ffbb33;
-    position: fixed;
-    top: 20%;
+    position: absolute;
+    top: 40%;
     left:0%;
     height:100px;
     width:30px;
@@ -35,4 +36,13 @@
     align-content: center;
     z-index: "1000"
     
+}
+.sidebar-left-btn:hover{
+    background-color:  #FF8800
+}
+.add-task-btn{
+    background-color:  #f8a703;
+}
+.add-task-btn:hover{
+    background-color: #FF8800;;
 }
